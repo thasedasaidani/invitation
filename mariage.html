@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notre Mariage</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Georgia', serif;
+  background: linear-gradient(to bottom, #fffaf5, #f3e6d8);
+  color: #4a2c2a;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+section {
+  padding: 60px 20px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease-out;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+h1, h2 {
+  font-weight: normal;
+}
+
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: url('https://images.unsplash.com/photo-1523438885200-e635ba2c371e') center/cover no-repeat;
+  color: white;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+.hero h1 {
+  font-size: 3em;
+  letter-spacing: 2px;
+}
+
+.hero p {
+  font-size: 1.3em;
+  margin-top: 10px;
+}
+
+button {
+  background: #c9a46a;
+  border: none;
+  padding: 12px 25px;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 30px;
+  margin-top: 20px;
+  transition: transform 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+.details, .program {
+  max-width: 600px;
+  margin: auto;
+}
+
+footer {
+  padding: 20px;
+  font-size: 0.9em;
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+  <h1 id="hero-text">Thaseda & Zakaria</h1>
+  <p>Ont l’immense joie de vous inviter à célébrer leur union</p>
+  <button onclick="scrollToSection('details')">
+    Découvrir l’invitation
+  </button>
+</section>
+
+<section id="details" class="details">
+  <h2>📅 Le Mariage</h2>
+  <p><strong>Date :</strong> 11 Juillet 2026</p>
+  <p><strong>Lieu :</strong> Palais Al Andalous</p>
+  <a href="https://www.google.com/maps?q=FVR6+952,+Rue+Oudjir+Amar,+Ouled+Yaïch,+Algérie" target="_blank">
+    <button>📍 Voir l’itinéraire</button>
+  </a>
+</section>
+
+<section class="program">
+  <h2>📜 Programme</h2>
+  <p>14h00 – Cérémonie</p>
+  <p>16h00 – L'arrivée de la mariée</p>
+  <p>18h00 – Tasdira</p>
+  <p>19h00 – Cake 🎂</p>
+</section>
+
+<footer>
+  Avec amour 💕 — Thaseda & Zakaria
+</footer>
+
+<script>
+// ======= TEXTE ANIME =======
+const heroText = document.getElementById('hero-text');
+let i = 0;
+const text = heroText.innerText;
+heroText.innerText = '';
+function typeEffect() {
+  if (i < text.length) {
+    heroText.innerText += text.charAt(i);
+    i++;
+    setTimeout(typeEffect, 150);
+  }
+}
+typeEffect();
+
+// ======= SCROLL SMOOTH =======
+function scrollToSection(id) {
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
+// ======= FADE IN AU SCROLL =======
+const sections = document.querySelectorAll('section');
+window.addEventListener('scroll', () => {
+  sections.forEach(sec => {
+    const rect = sec.getBoundingClientRect();
+    if(rect.top < window.innerHeight - 100){
+      sec.classList.add('visible');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
