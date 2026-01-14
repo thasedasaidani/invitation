@@ -41,23 +41,21 @@ body {
 .hero h1, .hero p, .hero button {
   position: relative;
   z-index: 2;
-}
-
-.hero h1 {
-  font-size: 3em;
-  margin: 0;
-  letter-spacing: 2px;
   opacity: 0;
   transform: translateY(30px);
   transition: all 1s ease-out;
 }
 
+/* ===== TEXTES ===== */
+.hero h1 {
+  font-size: 3em;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
 .hero p {
   font-size: 1.3em;
   margin: 15px 0 25px;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 1s ease-out 0.3s;
 }
 
 /* ===== BUTTONS ===== */
@@ -70,8 +68,6 @@ button {
   cursor: pointer;
   border-radius: 25px;
   transition: all 0.3s;
-  opacity: 0;
-  transform: translateY(30px);
 }
 
 button:hover {
