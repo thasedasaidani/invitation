@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Notre Mariage</title>
+<title>Invitation Mariage Zakaria & Thaseda</title>
 
 <style>
 /* ===== GLOBAL ===== */
@@ -23,10 +23,9 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: url('hero-bg.png') center/cover no-repeat;
+  background: url('hero-bg.jpeg') center/cover no-repeat;
   position: relative;
-  color: white;
-  text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
+  overflow: hidden;
 }
 
 .hero::before {
@@ -38,52 +37,71 @@ body {
   z-index: 1;
 }
 
-.hero h1, .hero p, .hero button {
+/* Texte HERO */
+.hero-texts {
   position: relative;
   z-index: 2;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 1s ease-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-/* ===== TEXTES ===== */
-.hero h1 {
+.hero-names {
   font-size: 3em;
-  margin: 0;
-  letter-spacing: 2px;
+  color: #FFD700;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+  margin-bottom: 15px;
+  opacity: 0;
+  animation: fadeInNames 2s forwards 0.5s;
 }
 
-.hero p {
-  font-size: 1.3em;
-  margin: 15px 0 25px;
+.hero-invite {
+  font-size: 1.5em;
+  margin-bottom: 30px;
+  color: #fff7cd;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInInvite 1.5s forwards 2.5s;
 }
 
-/* ===== BUTTONS ===== */
-button {
-  background: #c9a46a;
-  color: white;
-  border: none;
+.btn-glow {
+  background: linear-gradient(135deg, #eee5b0, #fff1cb);
+  color: #4a2c2a;
+  font-weight: bold;
+  border-radius: 30px;
   padding: 12px 28px;
-  font-size: 1em;
+  border: none;
   cursor: pointer;
-  border-radius: 25px;
-  transition: all 0.3s;
+  margin-top: 15px;
+  box-shadow: 0 5px 15px rgba(255,215,0,0.5);
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInInvite 1.5s forwards 4s;
 }
 
-button:hover {
+.btn-glow:hover {
+  background: linear-gradient(135deg, #fff176, #ffb74d);
   transform: scale(1.1);
-  background: #b38d53;
+  box-shadow: 0 8px 25px rgba(255,215,0,0.7);
 }
 
-button:active {
-  transform: scale(0.95);
-  background: #a97d49;
+@keyframes fadeInNames {
+  to {opacity: 1;}
+}
+
+@keyframes fadeInInvite {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ===== SECTIONS ===== */
 section {
-  padding: 70px 20px;
-  max-width: 800px;
+  padding: 80px 20px;
+  max-width: 900px;
   margin: auto;
   opacity: 0;
   transform: translateY(50px);
@@ -97,40 +115,70 @@ section.visible {
 
 h2 {
   font-weight: normal;
-  margin-bottom: 25px;
-  font-size: 2em;
+  margin-bottom: 30px;
+  font-size: 2.2em;
+  color: #c9a46a;
 }
 
-/* ===== PROGRAMME ===== */
+/* DÉTAILS */
+.detail-card {
+  background: linear-gradient(145deg,#fffaf5,#fdf1e3);
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  max-width: 500px;
+  margin: auto;
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+.detail-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 25px 45px rgba(0,0,0,0.2);
+}
+
+/* PROGRAMME */
 .program {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
-  gap: 25px;
-  margin-top: 40px;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 30px;
+  margin-top: 50px;
 }
-
 .program .card {
-  background: #fffaf5;
+  background: linear-gradient(145deg,#fffaf5,#fdf1e3);
   border-radius: 25px;
   padding: 25px;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  font-size: 1.2em;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.program .card .time {
+  font-weight: bold;
+  font-size: 1.4em;
+  margin-bottom: 10px;
+  color: #c9a46a;
+}
+
+.program .card .event {
   font-size: 1.1em;
-  transition: all 0.3s;
 }
 
 .program .card:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.2);
 }
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 footer {
-  padding: 25px;
-  font-size: 0.9em;
+  padding: 30px;
+  font-size: 1em;
   color: #4a2c2a;
 }
 
-/* ===== PETALS ===== */
+/* PETALS */
 .petal {
   position: absolute;
   width: 12px;
@@ -151,60 +199,57 @@ footer {
 
 <body>
 
-<!-- ===== HERO ===== -->
+<!-- HERO -->
 <section class="hero">
-  <h1 id="hero-text">Thaseda & Zakaria</h1>
-  <p>Ont l’immense joie de vous inviter à célébrer leur union</p>
-  <button id="hero-btn" onclick="scrollToSection('details')">Découvrir l’invitation</button>
+  <div class="hero-texts">
+    <div class="hero-names">💖 Thaseda & Zakaria 💖</div>
+    <p class="hero-invite">Ont l’immense joie de vous inviter à célébrer leur union</p>
+    <button class="btn-glow" onclick="scrollToSection('details')">Découvrir l’invitation</button>
+  </div>
 </section>
 
-<!-- ===== DETAILS ===== -->
+<!-- DETAILS -->
 <section id="details">
   <h2>📅 Le Mariage</h2>
-  <p><strong>Date :</strong> 11 Juillet 2026</p>
-  <p><strong>Lieu :</strong> Palais Al Andalous</p>
-  <a href="https://www.google.com/maps?q=FVR6+952,+Rue+Oudjir+Amar,+Ouled+Yaïch,+Algérie" target="_blank">
-    <button>📍 Voir l’itinéraire</button>
-  </a>
+  <div class="detail-card">
+    <p><strong>Date :</strong> 11 Juillet 2026</p>
+    <p><strong>Lieu :</strong> Palais Al Andalous - Blida -</p>
+    <a href="https://www.google.com/maps?q=FVR6+952,+Rue+Oudjir+Amar,+Ouled+Yaïch,+Algérie" target="_blank">
+      <button class="btn-glow">📍 Voir l’itinéraire</button>
+    </a>
+  </div>
 </section>
 
-<!-- ===== PROGRAMME ===== -->
+<!-- PROGRAMME -->
 <section class="program">
   <h2>📜 Programme</h2>
-  <div class="card">14h00 – Cérémonie</div>
-  <div class="card">16h00 – L'arrivée de la mariée</div>
-  <div class="card">18h00 – Tasdira</div>
-  <div class="card">19h00 – Cake 🎂</div>
+  <div class="card">
+    <p class="time">14h00</p>
+    <p class="event">Cérémonie 💍</p>
+  </div>
+  <div class="card">
+    <p class="time">16h00</p>
+    <p class="event">L'arrivée de la mariée 🎀</p>
+  </div>
+  <div class="card">
+    <p class="time">18h00</p>
+    <p class="event">Tasdira 👰</p>
+  </div>
+  <div class="card">
+    <p class="eat">19h00</p>
+    <p class="event">Dîner 🍱</p>
+  </div>
+  <div class="card">
+    <p class="time">20h00</p>
+    <p class="event">Cake 🎂</p>
+  </div>
 </section>
 
 <footer>
-  Avec amour 💕 — Thaseda & Zakaria
+  Avec amour 💕 — Thaseda & Zakaria - 2026 -
 </footer>
 
 <script>
-// ===== TEXT ANIMATION =====
-const heroText = document.getElementById('hero-text');
-const heroP = document.querySelector('.hero p');
-const heroBtn = document.getElementById('hero-btn');
-
-let i = 0;
-const text = heroText.innerText;
-heroText.innerText = '';
-
-function typeEffect() {
-  if(i < text.length){
-    heroText.innerText += text.charAt(i);
-    i++;
-    setTimeout(typeEffect, 100);
-  } else {
-    heroP.style.opacity = '1';
-    heroP.style.transform = 'translateY(0)';
-    heroBtn.style.opacity = '1';
-    heroBtn.style.transform = 'translateY(0)';
-  }
-}
-typeEffect();
-
 // ===== SMOOTH SCROLL =====
 function scrollToSection(id){
   document.getElementById(id).scrollIntoView({behavior:'smooth'});
@@ -223,7 +268,7 @@ window.addEventListener('scroll', () => {
 
 // ===== PETALS =====
 function createPetals(){
-  for(let i=0;i<35;i++){
+  for(let i=0;i<40;i++){
     const petal = document.createElement('div');
     petal.classList.add('petal');
     petal.style.left = Math.random()*100 + 'vw';
