@@ -7,6 +7,7 @@
 
 <style>
 /* ===== GLOBAL ===== */
+
 body {
   margin: 0;
   font-family: 'Georgia', serif;
@@ -15,6 +16,8 @@ body {
   overflow-x: hidden;
   background: #fdf6f0;
 }
+
+
 
 /* ===== HERO ===== */
 .hero {
@@ -171,6 +174,49 @@ h2 {
   box-shadow: 0 25px 50px rgba(0,0,0,0.2);
 }
 
+/* DOWNLOAD SECTION */
+.download-card {
+  background: linear-gradient(145deg,#fffaf5,#fdf1e3);
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  max-width: 500px;
+  margin: auto;
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+.download-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 25px 45px rgba(0,0,0,0.2);
+}
+.download-card img {
+  max-width: 100%;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  display: none;
+  animation: fadeInImage 0.8s ease-out;
+}
+.btn-preview {
+  background: linear-gradient(135deg, #e8d5b7, #f5e6d3);
+  color: #4a2c2a;
+  font-weight: bold;
+  border-radius: 30px;
+  padding: 12px 28px;
+  border: none;
+  cursor: pointer;
+  margin: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+.btn-preview:hover {
+  background: linear-gradient(135deg, #c9a46a, #e8d5b7);
+  transform: scale(1.05);
+}
+@keyframes fadeInImage {
+  from {opacity: 0; transform: scale(0.9);}
+  to {opacity: 1; transform: scale(1);}
+}
+
 /* FOOTER */
 footer {
   padding: 30px;
@@ -203,10 +249,8 @@ footer {
 <section class="hero">
   <div class="hero-texts">
     <div class="hero-names">💖 Thaseda & Zakaria 💖</div>
-    <p class="hero-invite">Ont l’immense joie de vous inviter à célébrer leur union</p>
-    <button class="btn-glow" onclick="scrollToSection('details')">Découvrir l’invitation</button>
-      <button class="btn-glow" onclick="window.print()">🖨️ Imprimer / PDF</button>
-
+    <p class="hero-invite">Ont l'immense joie de vous inviter à célébrer leur union</p>
+    <button class="btn-glow" onclick="scrollToSection('details')">Découvrir l'invitation</button>
   </div>
 </section>
 
@@ -216,9 +260,17 @@ footer {
   <div class="detail-card">
     <p><strong>Date :</strong> 11 Juillet 2026</p>
     <p><strong>Lieu :</strong> Palais Al Andalous - Blida -</p>
-    <a href="https://www.google.com/maps?q=FVR6+952,+Rue+Oudjir+Amar,+Ouled+Yaïch,+Algérie" target="_blank">
-      <button class="btn-glow">📍 Voir l’itinéraire</button>
-    </a>
+    <a href="https://www.google.com/maps?q=FVR6+952,+Rue+Oudjir+Amar,+Ouled+Yaïch,+Algérie" target="_blank" class="btn-glow" style="display:inline-block;text-decoration:none;">📍 Voir l'itinéraire</a>
+  </div>
+</section>
+
+<!-- DOWNLOAD -->
+<section id="download">
+  <h2>⬇️ Télécharger l'invitation</h2>
+  <div class="download-card">
+    <img id="invitationImage" src="invitation.png" alt="Invitation Mariage">
+    <button class="btn-preview" onclick="showAndDownload()">👁️ Voir l'invitation & Télécharger</button>
+    <a id="downloadLink" href="invitation.png" download="invitation-mariage-zakaria-thaseda.png" class="btn-glow" style="display:inline-block;text-decoration:none;display:none;">📥 Télécharger l'invitation</a>
   </div>
 </section>
 
@@ -238,7 +290,7 @@ footer {
     <p class="event">Tasdira 👰</p>
   </div>
   <div class="card">
-    <p class="eat">19h00</p>
+    <p class="time">19h00</p>
     <p class="event">Dîner 🍱</p>
   </div>
   <div class="card">
@@ -279,7 +331,29 @@ function createPetals(){
   }
 }
 createPetals();
+
+// ===== SHOW IMAGE AND DOWNLOAD =====
+function showAndDownload(){
+  const img = document.getElementById('invitationImage');
+  const downloadLink = document.getElementById('downloadLink');
+  const previewBtn = document.querySelector('.btn-preview');
+  
+  // Show image with animation
+  img.style.display = 'block';
+  
+  // Show download button
+  downloadLink.style.display = 'inline-block';
+  
+  // Hide preview button
+  previewBtn.style.display = 'none';
+  
+  // Trigger download after a short delay
+  setTimeout(() => {
+    downloadLink.click();
+  }, 500);
+}
 </script>
 
 </body>
 </html>
+
